@@ -4,6 +4,12 @@ document.addEventListener('DOMContentLoaded', function () {
     const recordButton = document.getElementById('recordButton');
     const resultDiv = document.getElementById('result');
     const dialogContainer = document.getElementById('dialog');
+    const puzzleQuestionDiv = document.getElementById('puzzle_question');
+    const puzzleAnswerDiv = document.getElementById('puzzle_answer');
+
+    // 海龟汤内容
+    let puzzleQuestionContent = puzzleQuestionDiv.innerHTML;
+    let puzzleAnswerContent = puzzleAnswerDiv.innerHTML;
 
     // 用于存储录音数据的变量
     let mediaRecorder;
@@ -88,6 +94,8 @@ document.addEventListener('DOMContentLoaded', function () {
         // 创建FormData对象，用于将数据发送到后端
         const formData = new FormData();
         formData.append('audio', blob);
+        formData.append('puzzle_question', puzzleQuestionContent);
+        formData.append('puzzle_answer', puzzleAnswerContent);
 
         // 使用jQuery发送POST请求
         $.ajax({

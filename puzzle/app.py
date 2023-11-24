@@ -31,8 +31,12 @@ def puzzle_page(detail):
 # 音频处理
 @app.route('/process_audio', methods=['POST'])
 def process_audio():
+    # 接收汤面内容
+    puzzle_question = request.form.get('puzzle_question')
+    # 接收汤底内容
+    puzzle_answer = request.form.get('puzzle_answer')
     # 接收音频文件
-    audio_file = request.files['audio']
+    audio_file = request.files.get('audio')
 
     #####################################
     # 在这里处理接收到的语音文件
