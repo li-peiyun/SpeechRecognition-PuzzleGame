@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>谜题选择</title>
+</head>
+<body>
+{% for item in data %}
+<div>
+    <!--  item字典转换为字符串的形式作为参数传递给谜题页面  -->
+    <a href="{{ url_for('puzzle_page',detail=item) }}">{{ item.title }}</a>
+</div>
+{% endfor %}
+</body>
+</html>

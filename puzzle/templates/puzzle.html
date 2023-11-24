@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>谜题详情页</title>
+</head>
+<body>
+<div>
+    <div>海龟汤：{{ data.title }}</div>
+    <hr>
+    <div>汤面：</div>
+    <div>{{ data.question }}</div>
+    <hr>
+    <div>你需要通过提问推理出事情的经过</div>
+    <div>玩法：点击录音按钮说出你的问题，要求问题必须只能用“是”或“不是”回答</div>
+    <hr>
+
+    <!--  录音  -->
+    <button id="recordButton">开始录音</button>
+    <div id="result"></div>
+    <div id="dialog"></div>
+
+    <!--  谜底  -->
+    <hr>
+    <button id="showAnswerButton">显示谜底</button>
+    <div id="answer" style="display: none;">
+        <div>{{ data.answer }}</div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="{{ url_for('static', filename='scripts/main.js') }}"></script>
+</div>
+</body>
+</html>
