@@ -4,6 +4,7 @@ from flask import Flask, render_template, request, jsonify
 from aip import AipSpeech
 import subprocess
 import tempfile
+from chatgpt_answer import generate_response
 
 APP_ID = '43554036'
 API_KEY = '6KGm6tAxGK6ooLkLODnxTEvH'
@@ -72,14 +73,17 @@ def process_audio():
     # 使用文件路径调用百度地图API
     question_result = client.asr(audio_content, 'wav', 16000, {'dev_pid': 1537})
     # 查看结果形式
-    # print(question_result)
+    #print(question_result)
+    text = " 我产生了幻觉吗？" #测试函数接口
+    response = generate_response(puzzle_answer, question_result['result'][0])
+    #print(response)
     # 构建包含处理结果的字典对象
     result = {
         # 处理完成后需要替换以下内容
         # xwt替换question内容为检测的句子
         'question': question_result['result'][0],
         # lx替换answer内容为chatgpt回答
-        'answer': '不是'
+        'answer': response
     }
 
     return jsonify(result)
