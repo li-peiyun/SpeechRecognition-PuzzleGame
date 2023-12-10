@@ -4,7 +4,8 @@ import json
 def generate_response(assistant_content, user_content):
     # 设置API端点和密钥
     api_endpoint = "https://api.openai.com/v1/chat/completions"
-    api_key = "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"
+    api_key = ""
+
     # 设置请求标头
     headers = {
         "Content-Type": "application/json",
@@ -34,7 +35,7 @@ def generate_response(assistant_content, user_content):
         return f"Error: {response.status_code} - {response.text}"
 
 # 调用函数并打印生成的文本
-# assistant_content = "《半瓶香水》谜底：我的妈妈前几天去世了，妈妈的去世对我产生了极大打击，以至于我产生了幻觉和梦游症，到了夜晚，梦游状态的我穿上妈妈生前给我买的漂亮衣服，喷上妈妈生前送我的香水，到她的墓地前和她聊天。那天我在照镜子时，把镜子里的自己幻想成了妈妈，我便与她理论，却不小心把镜子推倒了，镜子碎了一地，我赶忙用手去捡，手被玻璃割破，鲜血流了出来。"
-# user_content = "我精神不正常吗？"
-# generated_text = generate_response(assistant_content, user_content)
-# print(generated_text)
+assistant_content = "《半瓶香水》谜底：我的妈妈前几天去世了，妈妈的去世对我产生了极大打击，以至于我产生了幻觉和梦游症，到了夜晚，梦游状态的我穿上妈妈生前给我买的漂亮衣服，喷上妈妈生前送我的香水，到她的墓地前和她聊天。那天我在照镜子时，把镜子里的自己幻想成了妈妈，我便与她理论，却不小心把镜子推倒了，镜子碎了一地，我赶忙用手去捡，手被玻璃割破，鲜血流了出来。你的回答只能是“是”或“不是”，如果无法回答，就随机回答“是”或“不是”"
+user_content = "我产生了幻觉吗？"
+generated_text = generate_response(assistant_content, user_content)
+print(generated_text)

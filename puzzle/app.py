@@ -1,18 +1,18 @@
 import ast
-
+import asyncio
 from flask import Flask, render_template, request, jsonify
-from aip import AipSpeech
 import subprocess
 import tempfile
 from chatgpt_answer import generate_response
+from iat_ws_python3 import *
 
-APP_ID = '43554036'
-API_KEY = '6KGm6tAxGK6ooLkLODnxTEvH'
-SECRET_KEY = 'woFwxbwL3oa2fRzX5lIjk4fKqLhwje3p'
-ffmpeg_path = 'D:/AAAProgramFiles/ffmpeg-2023-11-22-git-0008e1c5d5-full_build/bin/ffmpeg'
+APP_ID = 'c0c8e7d0'  # 请替换为您的科大讯飞 APP ID
+API_KEY = '2062a1183a98296cad37d4b4265452ad'  # 请替换为您的科大讯飞 API Key
+SECRET_KEY = 'NmNiZjFiM2E2OTc5MWVjZDM0OWQzNTY4'  # 请替换为您的科大讯飞 API Secret
+
+ffmpeg_path = 'D:/Program Files/ffmpeg/bin/ffmpeg'
 
 app = Flask(__name__)
-
 
 # 欢迎页
 @app.route('/')
@@ -38,6 +38,7 @@ def puzzle_page(detail):
     return render_template("puzzle.html", data=puzzle)
 
 
+# 语音识别接口
 
 # 音频处理
 @app.route('/process_audio', methods=['POST'])
@@ -48,8 +49,6 @@ def process_audio():
     puzzle_answer = request.form.get('puzzle_answer')
     # 接收音频文件
     audio_file = request.files.get('audio')
-    # 可以识别内容，形式错误
-    # audio_content = audio_file.read()
 
     # 创建临时文件并保存上传的音频文件
     with tempfile.NamedTemporaryFile(delete=False) as temp_audio_file:
@@ -60,29 +59,16 @@ def process_audio():
     temp_audio_path_converted = tempfile.NamedTemporaryFile(delete=False).name
     subprocess.run([ffmpeg_path, '-y', '-i', temp_audio_path_original, '-f', 's16le', '-ac', '1', '-ar', '16000', temp_audio_path_converted])
 
+    # 调用科大讯飞语音识别
+    question = transfer(temp_audio_path_converted)
+    # response = '2'
 
-    # 读取转换后的音频文件内容
-    with open(temp_audio_path_converted, 'rb') as converted_file:
-        audio_content = converted_file.read()
+    # chatgpt接口
+    response = generate_response(puzzle_answer, question)
 
-    #####################################
-    # 在这里处理接收到的语音文件
-    #####################################
-    client = AipSpeech(APP_ID, API_KEY, SECRET_KEY)
-
-    # 使用文件路径调用百度地图API
-    question_result = client.asr(audio_content, 'wav', 16000, {'dev_pid': 1537})
-    # 查看结果形式
-    #print(question_result)
-    text = " 我产生了幻觉吗？" #测试函数接口
-    response = generate_response(puzzle_answer, question_result['result'][0])
-    #print(response)
     # 构建包含处理结果的字典对象
     result = {
-        # 处理完成后需要替换以下内容
-        # xwt替换question内容为检测的句子
-        'question': question_result['result'][0],
-        # lx替换answer内容为chatgpt回答
+        'question': question,
         'answer': response
     }
 
