@@ -1,5 +1,4 @@
 import ast
-import asyncio
 from flask import Flask, render_template, request, jsonify
 import subprocess
 import tempfile
@@ -13,6 +12,7 @@ SECRET_KEY = 'NmNiZjFiM2E2OTc5MWVjZDM0OWQzNTY4'  # 请替换为您的科大讯�
 ffmpeg_path = 'D:/Program Files/ffmpeg/bin/ffmpeg'
 
 app = Flask(__name__)
+
 
 # 欢迎页
 @app.route('/')
