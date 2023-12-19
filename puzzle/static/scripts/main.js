@@ -2,10 +2,9 @@
 document.addEventListener('DOMContentLoaded', function () {
     // 获取页面中的元素
     const recordButton = document.getElementById('recordButton');
-    const resultDiv = document.getElementById('result');
-    const dialogContainer = document.getElementById('dialog');
     const puzzleQuestionDiv = document.getElementById('puzzle_question');
     const puzzleAnswerDiv = document.getElementById('puzzle_answer');
+
 
     // 海龟汤内容
     let puzzleQuestionContent = puzzleQuestionDiv.innerHTML;
@@ -58,15 +57,6 @@ document.addEventListener('DOMContentLoaded', function () {
             // 发送语音数据到后端
             sendAudioData(blob);
 
-            ///////////////////////////////////
-            // 在页面上显示录制的语音，测试用，后期删除
-            ///////////////////////////////////
-            const audioElement = document.createElement('audio');
-            audioElement.controls = true;
-            audioElement.src = audioUrl;
-            resultDiv.innerHTML = '';
-            resultDiv.appendChild(audioElement);
-
             // 重置 chunks 数组
             chunks = [];
         };
@@ -107,19 +97,16 @@ document.addEventListener('DOMContentLoaded', function () {
             success: function (response) {
                 console.log('success');
 
-                // 创建新的 div 元素，显示新的对话
-                const questionElement = document.createElement('div');
-                questionElement.innerHTML = `问：${response.question}`;
-                const answerElement = document.createElement('div');
-                answerElement.innerHTML = `答：${response.answer}`;
+                console.log('问题：'+response.question+'，回答：'+response.answer)
+                // 将 response.question 放入发送的输入
+                insertMessage(response.question);
 
-                // 将新的对话添加到 dialogContainer 中
-                dialogContainer.appendChild(questionElement);
-                dialogContainer.appendChild(answerElement);
-            },
-            error: function (error) {
-                console.error(error); // 处理失败后的回调函数
-            }
+                // 将 response.answer 放入返回的消息
+                fakeMessage(response.answer);
+                },
+                error: function (error) {
+                    console.error(error); // 处理失败后的回调函数
+                }
         });
     }
 });
@@ -129,4 +116,56 @@ document.addEventListener('DOMContentLoaded', function () {
 document.getElementById('showAnswerButton').addEventListener('click', function() {
     var answerDiv = document.getElementById('answer');
     answerDiv.style.display = 'block';
+    // 禁用按钮
+    this.disabled = true;
+    fakeMessage("请查看汤面看看你的想法是否正确吧！");
+    document.getElementById('recordButton').disabled = true;
 });
+
+// 结束后返回到上一个界面
+document.getElementById('end_up').addEventListener('click', function() {
+  window.history.back();
+});
+
+
+//puzzle详情页样式逻辑
+var $messages = $('.messages-content'),
+    d, h, m,
+    i = 0;
+
+$(document).ready(function() {
+
+    setTimeout(function() {
+        fakeMessage('现在你可以开始问问题啦！');
+    }, 100);
+});
+
+function updateScrollbar() {
+  var messagesContent = document.querySelector('.messages-content');
+  messagesContent.scrollTop = messagesContent.scrollHeight;
+}
+function insertMessage(msg) {
+    if ($.trim(msg) === '') {
+        return false;
+    }
+    $('<div class="message message-personal">' + msg + '</div>').appendTo($('.messages-content')).addClass('new');
+    updateScrollbar();
+
+}
+
+
+
+function fakeMessage(msg) {
+    if ($('.message-input').val() !== '') {
+        return false;
+    }
+    $('<div class="message loading new"><figure class="avatar"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/156381/profile/profile-80.jpg" /></figure><span></span></div>').appendTo($('.messages-content'));
+    updateScrollbar();
+
+    setTimeout(function() {
+        $('.message.loading').remove();
+        $('<div class="message new"><figure class="avatar"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/156381/profile/profile-80.jpg" /></figure>' + msg + '</div>').appendTo($('.messages-content')).addClass('new');
+        updateScrollbar();
+        i++;
+    }, 1000 + (Math.random() * 20) * 100);
+}

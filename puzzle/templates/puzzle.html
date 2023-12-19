@@ -1,34 +1,63 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>谜题详情页</title>
+
+    <!-- 引入jQuery库 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.0/jquery.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/puzzle.css') }}">
 </head>
 <body>
-<div>
-    <div>海龟汤：{{ data.title }}</div>
-    <hr>
-    <div>汤面：</div>
-    <div id="puzzle_question">{{ data.question }}</div>
-    <hr>
-    <div>你需要通过提问推理出事情的经过</div>
-    <div>玩法：点击录音按钮说出你的问题，要求问题必须只能用“是”或“不是”回答</div>
-    <hr>
+    <!-- 这里是你的HTML代码 -->
+    <div class="chat">
+      <div class="chat-title">
+          <div>
+               <h1>{{data.title}}</h1>
+                <h2>海龟汤</h2>
+                <figure class="avatar">
+                  <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/156381/profile/profile-80.jpg" />
+                </figure>
+          </div>
 
-    <!--  录音  -->
-    <button id="recordButton">开始录音</button>
-    <div id="result"></div>
-    <div id="dialog"></div>
+      </div>
+      <div class="messages">
+        <div class="messages-content"></div>
+      </div>
+      <div class="message-box">
+        <p class="message-input"></p>
+{#        <button type="submit" class="message-submit">发送</button>#}
+          <button id="recordButton" class="record-button">开始录音</button>
+              <div id="result"></div>
+            <div id="dialog"></div>
+      </div>
 
-    <!--  谜底  -->
-    <hr>
-    <button id="showAnswerButton">显示谜底</button>
-    <div id="answer" style="display: none;">
-        <div id="puzzle_answer">{{ data.answer }}</div>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script src="{{ url_for('static', filename='scripts/main.js') }}"></script>
-</div>
+
+    <div class="haiguiData">
+
+        <div class="haiguiBtn">标题</div>
+        <div class="haiguiDetail">海龟汤：{{ data.title }}</div>
+
+        <div class="haiguiBtn">汤面：</div>
+        <div class="haiguiDetail" id="puzzle_question">{{ data.question }}</div>
+
+        <div class="haiguiBtn">规则</div>
+        <div class="haiguiDetail">1.你需要通过提问推理出事情的经过<br>2.点击录音按钮说出你的问题，要求问题必须只能用“是”或“不是”回答<br>3.需要结束游戏时，点击[查看汤面]按钮可查看谜底</div>
+
+{#        添加查看汤面按钮#}
+        <button class="show-result" id="showAnswerButton">显示谜底</button>
+        <div class="haiguiDetail" id="answer" style="display: none;">
+            <div id="puzzle_answer">{{ data.answer }}</div>
+            <button id="end_up" class="show-result">结束游戏</button>
+        </div>
+
+
+    </div>
+
+    <div class="bg"></div>
+
+ <script src="{{ url_for('static', filename='scripts/main.js') }}"></script>
+
 </body>
 </html>

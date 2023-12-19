@@ -4,7 +4,7 @@ import json
 def generate_response(assistant_content, user_content):
     # 设置API端点和密钥
     api_endpoint = "https://api.openai.com/v1/chat/completions"
-    api_key = ""
+    api_key = "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"
 
     # 设置请求标头
     headers = {
