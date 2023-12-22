@@ -159,12 +159,12 @@ function fakeMessage(msg) {
     if ($('.message-input').val() !== '') {
         return false;
     }
-    $('<div class="message loading new"><figure class="avatar"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/156381/profile/profile-80.jpg" /></figure><span></span></div>').appendTo($('.messages-content'));
+    $('<div class="message loading new"><figure class="avatar"><img src="../static/images/avatar1.jpg" /></figure><span></span></div>').appendTo($('.messages-content'));
     updateScrollbar();
 
     setTimeout(function() {
         $('.message.loading').remove();
-        $('<div class="message new"><figure class="avatar"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/156381/profile/profile-80.jpg" /></figure>' + msg + '</div>').appendTo($('.messages-content')).addClass('new');
+        $('<div class="message new"><figure class="avatar"><img src="../static/images/avatar1.jpg" /></figure>' + msg + '</div>').appendTo($('.messages-content')).addClass('new');
         updateScrollbar();
         i++;
     }, 1000 + (Math.random() * 20) * 100);

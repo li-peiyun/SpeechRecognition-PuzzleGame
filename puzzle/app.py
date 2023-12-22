@@ -9,7 +9,7 @@ APP_ID = 'c0c8e7d0'  # 请替换为您的科大讯飞 APP ID
 API_KEY = '2062a1183a98296cad37d4b4265452ad'  # 请替换为您的科大讯飞 API Key
 SECRET_KEY = 'NmNiZjFiM2E2OTc5MWVjZDM0OWQzNTY4'  # 请替换为您的科大讯飞 API Secret
 
-ffmpeg_path = 'D:/Program Files/ffmpeg/bin/ffmpeg'
+ffmpeg_path = 'D:/AAAProgramFiles/ffmpeg-2023-11-22-git-0008e1c5d5-full_build/bin/ffmpeg.exe'
 
 app = Flask(__name__)
 
@@ -61,10 +61,10 @@ def process_audio():
 
     # 调用科大讯飞语音识别
     question = transfer(temp_audio_path_converted)
-    # response = '2'
+    response = '2'
 
     # chatgpt接口
-    response = generate_response(puzzle_answer, question)
+    # response = generate_response(puzzle_answer, question)
 
     # 构建包含处理结果的字典对象
     result = {
