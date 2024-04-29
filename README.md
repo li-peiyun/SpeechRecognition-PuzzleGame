@@ -25,25 +25,25 @@
 
 1. 开始界面：开始界面具有动态效果，用户点击任何位置进入游戏。
 
-   ![welcome](.\image\welcome.png)
+   ![welcome](./image/welcome.png)
 
 2. 主题选择：进入游戏后，用户可以根据自己的兴趣选择主题。
 
-   ![menu](.\image\menu.png)
+   ![menu](./image/menu.png)
 
    鼠标悬停在主题卡片上显示主题详细信息。
 
-   ![menu1](.\image\menu1.png)
+   ![menu1](./image/menu1.png)
 
 3. 主题详情页面：选择主题后，用户可以进入主题详情页面。在该页面上，用户可以了解游戏规则和相关信息，包括如何提问、猜测谜底、操作汤面和访问问答界面。
 
-   ![detail](.\image\detail.png)
+   ![detail](./image/detail.png)
 
 4. 问答交互：当用户点击“开始录音”时，他们可以通过语音输入提问。系统将调用ChatGPT接口以“是”或“否”的格式提供答案。用户可以根据这些回答逐渐猜测谜底。
 
-   ![detail1](.\image\detail1.png)
+   ![detail1](./image/detail1.png)
 
 5. 查看谜底：用户点击“显示谜底”可以查看谜底是否与自己猜想一致。
 
-   ![result](.\image\result.png)
+   ![result](./image/result.png)
 
