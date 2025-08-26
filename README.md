@@ -1,49 +1,68 @@
-# 语音识别期末项目-海龟汤游戏
+# Puzzle Game - Voice Recognition Edition
 
-### 项目背景
+[中文版本](./README_zh.md)
 
-海龟汤是情景谜题的俗称。情景谜题通常在一个小组中进行，其中一人主持谜题，其他人提问，只能回答“是”或“否”。当玩家中的一人能够复述主持人在心中构想的叙述时，谜题就解决了，特别是解释了最初情景中令人困惑的方面。
+### 🎯 Project Background
 
-### 游戏方式
+“Turtle Soup” is a type of situational riddle game. Typically played in groups, one person hosts the riddle while others ask questions, which can only be answered with “Yes” or “No.” The riddle is solved when a player can accurately reconstruct the scenario in the host’s mind, especially clarifying the initially confusing aspects.
 
-我们给出一段场景描述，玩家据此使用语音进行提问，我们对语音进行识别，调用chatgpt接口回答玩家问题，帮助玩家推理出该场景的真实情况。
+### 🎮 Gameplay
 
-### 项目亮点
+A scene description is given, and players ask questions using **voice input**. The system recognizes speech and calls the **ChatGPT API** to answer questions, helping players reason out the real scenario.
 
-- 精美的游戏画面
-- 用户友好的交互性，包含键鼠、语音等多种方式
-- AI的使用
-- 创新性与商业价值
+### ✨ Project Highlights
 
-### 相关技术
+- Beautiful and intuitive game interface
+- User-friendly interaction via mouse, keyboard, and voice
+- AI-powered question answering
+- Innovative and potential commercial value
 
-- 本项目采用Flask框架进行Web开发，配合轻量级SQLite数据库进行数据管理。
-- 调用ChatGPT API，动态适应各种主题和用户输入。
-- 利用讯飞API进行语音转文本转换。
+### 🛠️ Technologies
 
-### 实际游戏画面
+- **Flask** framework for web development, with a lightweight **SQLite** database for data management
+- **ChatGPT API** for dynamic question answering
+- **iFlyTek API** for speech-to-text conversion
 
-1. 开始界面：开始界面具有动态效果，用户点击任何位置进入游戏。
+### 🖼️ Game Screenshots
 
-   ![welcome](./image/welcome.png)
+1. **Welcome Screen** – Click anywhere to start:
+    ![welcome](./image/welcome.png)
+2. **Theme Selection** – Choose a theme:
+    ![menu](./image/menu.png)
+    Hovering shows detailed theme info:
+    ![menu1](./image/menu1.png)
+3. **Theme Details** – Learn rules, how to ask questions, guess the answer, interact with the “soup surface,” and access the Q&A interface:
+    ![detail](./image/detail.png)
+4. **Q&A Interaction** – Click “Start Recording” to ask questions by voice. ChatGPT responds with “Yes” or “No”:
+    ![detail1](./image/detail1.png)
+5. **View Answer** – Click “Show Answer” to see if your guess matches the correct solution:
+    ![result](./image/result.png)
 
-2. 主题选择：进入游戏后，用户可以根据自己的兴趣选择主题。
+------
 
-   ![menu](./image/menu.png)
+## ⚙️ Usage
 
-   鼠标悬停在主题卡片上显示主题详细信息。
+1. **Clone the repository:**
 
-   ![menu1](./image/menu1.png)
+```
+git clone <repository_url>
+cd puzzle
+```
 
-3. 主题详情页面：选择主题后，用户可以进入主题详情页面。在该页面上，用户可以了解游戏规则和相关信息，包括如何提问、猜测谜底、操作汤面和访问问答界面。
+2. **Set up your ChatGPT API key**
 
-   ![detail](./image/detail.png)
+You need to apply for a ChatGPT API key from OpenAI.
 
-4. 问答交互：当用户点击“开始录音”时，他们可以通过语音输入提问。系统将调用ChatGPT接口以“是”或“否”的格式提供答案。用户可以根据这些回答逐渐猜测谜底。
+3. **Install dependencies**
 
-   ![detail1](./image/detail1.png)
+4. **Run the Flask server:**
 
-5. 查看谜底：用户点击“显示谜底”可以查看谜底是否与自己猜想一致。
+```
+python app.py
+```
 
-   ![result](./image/result.png)
+5. **Open the game in your browser:**
 
+```
+http://localhost:5000
+```
