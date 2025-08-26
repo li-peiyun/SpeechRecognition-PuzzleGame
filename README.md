@@ -1,7 +1,5 @@
 # Puzzle Game - Voice Recognition Edition
 
-[中文版本](./README_zh.md)
-
 ### 🎯 Project Background
 
 “Turtle Soup” is a type of situational riddle game. Typically played in groups, one person hosts the riddle while others ask questions, which can only be answered with “Yes” or “No.” The riddle is solved when a player can accurately reconstruct the scenario in the host’s mind, especially clarifying the initially confusing aspects.
