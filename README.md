@@ -45,7 +45,7 @@ A scene description is given, and players ask questions using **voice input**. T
 
    ![detail1](./image/detail1.png)
    
-9. **View Answer** – Click “Show Answer” to see if your guess matches the correct solution:
+5. **View Answer** – Click “Show Answer” to see if your guess matches the correct solution:
 
    ![result](./image/result.png)
 
@@ -62,7 +62,7 @@ cd puzzle
 
 2. **Set up your ChatGPT API key**
 
-  You need to apply for a ChatGPT API key from OpenAI.
+   You need to apply for a ChatGPT API key from OpenAI.
 
 3. **Install dependencies**
 
