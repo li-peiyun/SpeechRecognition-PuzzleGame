@@ -26,17 +26,28 @@ A scene description is given, and players ask questions using **voice input**. T
 ### 🖼️ Game Screenshots
 
 1. **Welcome Screen** – Click anywhere to start:
-    ![welcome](./image/welcome.png)
+
+   ![welcome](./image/welcome.png)
+   
 2. **Theme Selection** – Choose a theme:
-    ![menu](./image/menu.png)
-    Hovering shows detailed theme info:
-    ![menu1](./image/menu1.png)
+
+   ![menu](./image/menu.png)
+   
+   Hovering shows detailed theme info:
+   
+   ![menu1](./image/menu1.png)
+   
 3. **Theme Details** – Learn rules, how to ask questions, guess the answer, interact with the “soup surface,” and access the Q&A interface:
-    ![detail](./image/detail.png)
+
+   ![detail](./image/detail.png)
+   
 4. **Q&A Interaction** – Click “Start Recording” to ask questions by voice. ChatGPT responds with “Yes” or “No”:
-    ![detail1](./image/detail1.png)
-5. **View Answer** – Click “Show Answer” to see if your guess matches the correct solution:
-    ![result](./image/result.png)
+
+   ![detail1](./image/detail1.png)
+   
+9. **View Answer** – Click “Show Answer” to see if your guess matches the correct solution:
+
+   ![result](./image/result.png)
 
 ------
 
@@ -51,7 +62,7 @@ cd puzzle
 
 2. **Set up your ChatGPT API key**
 
-You need to apply for a ChatGPT API key from OpenAI.
+  You need to apply for a ChatGPT API key from OpenAI.
 
 3. **Install dependencies**
 
